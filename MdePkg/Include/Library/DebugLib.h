@@ -439,11 +439,9 @@ UnitTestDebugAssert (
       }                            \
     } while (FALSE)
 #else
-#define DEBUG(Expression)        \
-    do {                           \
-      if (FALSE) {                 \
-        _DEBUGLIB_DEBUG (Expression);       \
-      }                            \
+#define DEBUG(Expression) \
+    do {                  \
+      (VOID) (Expression); \
     } while (FALSE)
 #endif
 
