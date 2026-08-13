@@ -704,6 +704,10 @@
   INTEL:*_*_IA32_CC_FLAGS  = -U_WIN32 -U_WIN64 -U_MSC_VER -U__ICC $(OPENSSL_FLAGS) $(OPENSSL_FLAGS_NOASM) /w
   INTEL:*_*_X64_CC_FLAGS   = -U_WIN32 -U_WIN64 -U_MSC_VER -U__ICC $(OPENSSL_FLAGS) $(OPENSSL_FLAGS_NOASM) /w
 
+  # Disable debug assertions in OpenSSL source — only for Release builds.
+  GCC:RELEASE_*_*_CC_FLAGS = -DNDEBUG
+  MSFT:RELEASE_X64_CC_FLAGS  = -DNDEBUG
+
   #
   # Suppress the following build warnings in openssl so we don't break the build with -Werror
   #   -Werror=maybe-uninitialized: there exist some other paths for which the variable is not initialized.
